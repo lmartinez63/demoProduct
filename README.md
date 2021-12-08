@@ -48,7 +48,9 @@ externo de DEV es diferente a la de PROD.
 
 9.- El objeto response del método GetById
 a. maestro: data bd local + data cache + data servicio externo
+http://localhost:8080/product/get/61aed1d738dc25373b8ce4f4
 b. detalle: data bd local
+http://localhost:8080/productDetails/get/61aed1d738dc25373b8ce4f4
 -> completado
 
 10.-Se debe desarrollar usando TDD (Unit tests y 1 unit test de integración)

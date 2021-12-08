@@ -28,7 +28,7 @@ a. La Lista de campos será definido por la persona evaluada (maestro y detalle)
   -> Maestro = Product
   -> Detaille = ProductDetail
 b. Utilizar migraciones para la creación de los objetos de la BD (Opcional)
-  -> aun no se hizo pero se pensaba usar Flyway
+  -> no se utilizo
 
 6.- 2 campos del objeto maestro debe venir del Cache de la aplicación.
 a. Se puede usar Cache estándar o Lazy Cache (o cualquiera que crea
@@ -42,7 +42,9 @@ ahora cada producto tiene un locationCode con el cual si es que el locationCode 
 
 8.- Se debe demostrar el manejo de properties por ambiente. Ej. la url del servicio
 externo de DEV es diferente a la de PROD.
--> Aun no se implemento
+-> trabajamos para 2 url para obtener los datos de las locations
+        http://productlocations.free.beeceptor.com/default
+        http://productlocations.free.beeceptor.com/dev      -spring.profiles.active=dev
 
 9.- El objeto response del método GetById
 a. maestro: data bd local + data cache + data servicio externo

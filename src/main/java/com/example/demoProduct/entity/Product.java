@@ -6,15 +6,23 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
+
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Builder
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonIgnoreProperties
 public class Product {
     @Id
-    public String id;
+    private String id;
+    private String name;
+    private String locationCode;
+    private List<ProductDetail> productDetails;
 
-    public String name;
+    @Transient
+    Location location;
+
 }

@@ -1,6 +1,8 @@
 package com.example.demoProduct.controller;
 
 import com.example.demoProduct.entity.Product;
+import com.example.demoProduct.entity.ProductDetail;
+import com.example.demoProduct.service.ProductDetailService;
 import com.example.demoProduct.service.ProductService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -11,12 +13,15 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @AllArgsConstructor(onConstructor = @__({@Autowired}))
 @RestController
 @Slf4j
 public class ProductController {
 
     ProductService productService;
+    ProductDetailService productDetailService;
 
     @RequestMapping(method = RequestMethod.GET, value = "/product/get/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> getProductById(@PathVariable String id){
@@ -24,6 +29,14 @@ public class ProductController {
         Product product = productService.getProductById(id);
         return ResponseEntity.ok(product);
     }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/productDetails/get/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> getProductDetailsById(@PathVariable String id){
+        log.info("action=getProductDetailsById id=", id);
+        List<ProductDetail> productDetailList = productDetailService.getProductDetailsByProductId(id);
+        return ResponseEntity.ok(productDetailList);
+    }
+
 
     @RequestMapping(method = RequestMethod.POST, value = "/product", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity createProduct(@RequestBody Product product) throws JsonProcessingException {

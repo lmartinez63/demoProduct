@@ -2,7 +2,7 @@
 1.-Actualmente se tiene la parte web de un sistema de registro de Productos y se desea
 hacer un servicio que soporte sus funcionalidades.
 2.- El servicio debe permitir INSERT (post), UPDATE (put) y GETBYID (get) de un maestro / detalle de productos.
--> Por el momento solo se implemento maestro, el cual es la collecion product
+-> el maestro es Product y el detalle esta dentro de Product como una lista de productDetail
 -> Los siguientes son los endpoints para el servicio
 -> INSERT (post) http://localhost:8080/product 
     -> Body Ej: {"name":"Anything"}
@@ -25,7 +25,8 @@ plano.
 5.- Se debe poder grabar la información del producto localmente (cualquier tipo de
 persistencia)
 a. La Lista de campos será definido por la persona evaluada (maestro y detalle).
-  -> Se trabaja sobre una bd mongo dockerizada sobre la collecion de producto
+  -> Maestro = Product
+  -> Detaille = ProductDetail
 b. Utilizar migraciones para la creación de los objetos de la BD (Opcional)
   -> aun no se hizo pero se pensaba usar Flyway
 
@@ -36,7 +37,8 @@ pertinente).
 
 7.- Se debe poder traer información de un servicio externo para devolver información del
 producto
--> Aun no se realizo pero se piensa usar FeignClient para la comunicacion externa
+-> La url externa a consultar es https://productlocations.free.beeceptor.com, nos brinda las localizaciones de un Product
+ahora cada producto tiene un locationCode con el cual si es que el locationCode esta dentro de la URL devolvera el objecto location dentro del mismo Product.
 
 8.- Se debe demostrar el manejo de properties por ambiente. Ej. la url del servicio
 externo de DEV es diferente a la de PROD.
@@ -45,7 +47,7 @@ externo de DEV es diferente a la de PROD.
 9.- El objeto response del método GetById
 a. maestro: data bd local + data cache + data servicio externo
 b. detalle: data bd local
--> Aun falta implementar
+-> completado
 
 10.-Se debe desarrollar usando TDD (Unit tests y 1 unit test de integración)
   -> Adicionalmente se implemento un unit test para el controlador y se puede ejecutar el siguiente comando para ver el resultado
